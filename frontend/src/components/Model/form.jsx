@@ -40,7 +40,6 @@ const Form = ({ isOpen, isEdit }) => {
       setAge(data.age);
       setPhone(data.phone);
       setAddress(data.address);
-      console.log(data.status);
       setIsContact(data.status.contract);
       setIsFullTime(data.status.full_time);
       setIsRemote(data.status.remote_location);

@@ -14,8 +14,6 @@ const Card = ({ data, setIsModelOn }) => {
           <FaUser className="text-9xl bg-purple-500 p-3 rounded-full text-white" />
         </div>
 
-        {console.log("data", data)}
-
         <div className="flex flex-col items-start pb-4 ml-2">
           <span className="text-lg font-medium">Name</span>
           <h3 className="text-xl capitalize font-semibold">{data.name}</h3>

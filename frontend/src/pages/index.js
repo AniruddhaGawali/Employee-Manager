@@ -47,7 +47,6 @@ export default function Home() {
       <main className=" flex flex-col items-center justify-center">
         <Navbar search={search} setSearch={setSearch} />
         <div className="grid grid-cols-3 mt-32 gap-10 w-10/12 items-center justify-center pb-10">
-          {console.log(employeeDataSet)}
           {employeeDataSet ? (
             employeeDataSet.map((employee, key) => (
               <Card key={key} data={employee} setIsModelOn={setIsModelOn} />

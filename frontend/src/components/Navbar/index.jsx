@@ -9,7 +9,7 @@ const Navbar = ({ search, setSearch }) => {
     <>
       <nav className="bg-purple-600/75 w-8/12 mx-10 mt-10 rounded-full p-2 flex items-center justify-between">
         <div className="flex items-center justify-center">
-          <div className="text-xl h-10 w-10 font-bold text-purple-600 bg-white w-fit  rounded-l-full px-3 py-2 flex text-center items-center justify-center ">
+          <div className="text-xl h-10  font-bold text-purple-600 bg-white w-fit  rounded-l-full px-3 py-2 flex text-center items-center justify-center ">
             {OnFocus ? <BiSearch className="text-purple-600 text-3xl" /> : "E"}
           </div>
 

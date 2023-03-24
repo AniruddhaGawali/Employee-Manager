@@ -67,7 +67,7 @@ const Form = ({ isOpen, isEdit }) => {
 
     if (modelId) {
       fetch(
-        `https://employee-manager-backend.up.railway.app/api/update_employee/`,
+        `https://employee-manager-backend.up.railway.app/api/edit_employee`,
         {
           method: "POST",
           headers: {

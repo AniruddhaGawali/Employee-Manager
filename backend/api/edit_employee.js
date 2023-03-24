@@ -18,7 +18,17 @@ router.post("/", async (req, res) => {
       { _id: new ObjectId(employee_data._id) },
       {
         $set: {
-          employee_data,
+          name: employee_data.name,
+          email: employee_data.email,
+          phone: employee_data.phone,
+          age: employee_data.age,
+          address: employee_data.address,
+          department: employee_data.department,
+          status: {
+            remote_location: employee_data.status.remote_location,
+            contract: employee_data.status.contract,
+            full_time: employee_data.status.full_time,
+          },
         },
       }
     );

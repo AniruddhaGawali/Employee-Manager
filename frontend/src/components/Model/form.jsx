@@ -51,6 +51,7 @@ const Form = ({ isOpen, isEdit }) => {
     e.preventDefault();
 
     const data = {
+      _id: modelId,
       name,
       department,
       email,
@@ -64,16 +65,35 @@ const Form = ({ isOpen, isEdit }) => {
       },
     };
 
-    fetch("https://employee-manager-backend.up.railway.app/api/add_employee", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+    if (modelId) {
+      fetch(
+        `https://employee-manager-backend.up.railway.app/api/update_employee/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error(error));
+    } else {
+      fetch(
+        "https://employee-manager-backend.up.railway.app/api/add_employee",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error(error));
+    }
   };
 
   return (

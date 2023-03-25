@@ -1,4 +1,5 @@
 import React from "react";
+import dynamic from "next/dynamic";
 
 import { RxCross2 } from "react-icons/rx";
 import { MdEdit } from "react-icons/md";
@@ -8,7 +9,11 @@ import Form from "./form";
 
 import { SetId, EmployeeDataContext } from "@/pages/_app";
 
-const Model = ({ isOpen, setOpen, id }) => {
+const Map = dynamic(() => import("./map"), {
+  ssr: false,
+});
+
+const Model = ({ isOpen, setOpen }) => {
   const { modelId } = React.useContext(SetId);
   const { setEmployeeData } = React.useContext(EmployeeDataContext);
 
@@ -76,15 +81,18 @@ const Model = ({ isOpen, setOpen, id }) => {
             </span>
           </>
         ) : null}
-
         <Form
           isOpen={isOpen}
           isEdit={modelId ? isEdit : true}
           setIsEdit={setIsEdit}
           setOpen={setOpen}
         />
+        {/* maps */}
+
+        {isEdit || modelId === null ? null : <Map />}
       </div>
-      <div className="fixed w-screen h-screen top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] -z-1  bg-black/40 backdrop-blur-sm"></div>
+
+      <div className="fixed w-screen h-screen top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] -z-1  bg-black/40 backdrop-blur-sm" />
     </div>
   );
 };

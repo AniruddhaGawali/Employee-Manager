@@ -14,6 +14,8 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
   const [age, setAge] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [address, setAddress] = React.useState("");
+  const [longitude, setLongitude] = React.useState(0);
+  const [latitude, setLatitude] = React.useState(0);
   const [isContact, setIsContact] = React.useState(false);
   const [isFullTime, setIsFullTime] = React.useState(false);
   const [isRemote, setIsRemote] = React.useState(false);
@@ -26,6 +28,8 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
       setAge("");
       setPhone("");
       setAddress("");
+      setLongitude(0);
+      setLatitude(0);
       setIsContact(false);
       setIsFullTime(false);
       setIsRemote(false);
@@ -42,6 +46,8 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
       setAge(data.age);
       setPhone(data.phone);
       setAddress(data.address);
+      setLongitude(data.longitude);
+      setLatitude(data.latitude);
       setIsContact(data.status.contract);
       setIsFullTime(data.status.full_time);
       setIsRemote(data.status.remote_location);
@@ -59,6 +65,8 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
       age,
       phone,
       address,
+      longitude,
+      latitude,
       status: {
         contract: isContact,
         full_time: isFullTime,
@@ -327,6 +335,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
             />
           </div>
           <div></div>
+
           <div className="flex flex-col mt-5 col-span-2">
             <label
               htmlFor="Address"
@@ -351,6 +360,63 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
               }`}
             />
           </div>
+          {isEdit ? (
+            <>
+              <div className="flex flex-col mt-5">
+                <label
+                  htmlFor="Longitude"
+                  className={
+                    !isEdit
+                      ? "text-xl pl-2"
+                      : "text-2xl font-semibold mb-0 p-1 "
+                  }
+                >
+                  Longitude
+                </label>
+
+                <input
+                  type="Longitude"
+                  name="Longitude"
+                  id="Longitude"
+                  value={longitude}
+                  disabled={!isEdit}
+                  onChange={(e) => setLongitude(e.target.value)}
+                  className={`border-2 border-purple-500/70 p-2 rounded-md focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-purple-500/70 ${
+                    !isEdit
+                      ? "border-none outline-none text-2xl font-semibold bg-transparent"
+                      : ""
+                  }`}
+                />
+              </div>
+
+              <div className="flex flex-col mt-5">
+                <label
+                  htmlFor="Latitude"
+                  className={
+                    !isEdit
+                      ? "text-xl pl-2"
+                      : "text-2xl font-semibold mb-0 p-1 "
+                  }
+                >
+                  Latitude
+                </label>
+
+                <input
+                  type="Latitude"
+                  name="Latitude"
+                  id="Latitude"
+                  value={latitude}
+                  disabled={!isEdit}
+                  onChange={(e) => setLatitude(e.target.value)}
+                  className={`border-2 border-purple-500/70 p-2 rounded-md focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-purple-500/70 ${
+                    !isEdit
+                      ? "border-none outline-none text-2xl font-semibold bg-transparent"
+                      : ""
+                  }`}
+                />
+              </div>
+            </>
+          ) : null}
 
           <div className="flex ml-1 mt-1 col-span-2 items-center justify-start">
             <input

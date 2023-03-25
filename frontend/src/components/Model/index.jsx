@@ -45,13 +45,20 @@ const Model = ({ isOpen, setOpen, id }) => {
                     await fetch(
                       "https://employee-manager-backend.up.railway.app/api/delete_employee",
                       {
-                        method: "DELETE",
+                        method: "POST",
                         headers: {
                           "Content-Type": "application/json",
                         },
                         body: JSON.stringify({ id: modelId }),
                       }
-                    );
+                    )
+                      .then((res) => res.json())
+                      .then((data) => {
+                        console.log(data);
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
 
                     await fetch(
                       "https://employee-manager-backend.up.railway.app/api/employee_data"

@@ -1,6 +1,5 @@
 import React from "react";
-import { SetId } from "@/pages/_app";
-import { EmployeeDataContext } from "@/pages/_app";
+import { SetId, EmployeeDataContext } from "@/pages/_app";
 
 import { toast } from "react-toastify";
 

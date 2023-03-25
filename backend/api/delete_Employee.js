@@ -5,7 +5,7 @@ const router = express.Router();
 const client = new MongoClient(
   "mongodb+srv://aniruddhagawali:RjBBQ5A8KyhMMnRp@shopmanager.qegag9v.mongodb.net/?retryWrites=true&w=majority"
 );
-router.post("/", async (req, res) => {
+router.delete("/", async (req, res) => {
   const employee_data = req.body;
 
   try {

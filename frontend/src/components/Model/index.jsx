@@ -2,13 +2,15 @@ import React from "react";
 
 import { RxCross2 } from "react-icons/rx";
 import { MdEdit } from "react-icons/md";
+import { TbTrashFilled } from "react-icons/tb";
 
 import Form from "./form";
 
-import { SetId } from "@/pages/_app";
+import { SetId, EmployeeDataContext } from "@/pages/_app";
 
 const Model = ({ isOpen, setOpen, id }) => {
   const { modelId } = React.useContext(SetId);
+  const { setEmployeeData } = React.useContext(EmployeeDataContext);
 
   const [isEdit, setIsEdit] = React.useState(false);
 
@@ -25,12 +27,41 @@ const Model = ({ isOpen, setOpen, id }) => {
           />
         </span>
         {modelId ? (
-          <span className="absolute right-20 top-5">
-            <MdEdit
-              onClick={() => setIsEdit(!isEdit)}
-              className="text-4xl p-1 cursor-pointer bg-purple-500 text-[#fee7ff] rounded-md opacity-90 hover:opacity-100 active:scale-90 transition-all duration-200"
-            />
-          </span>
+          <>
+            <span className="absolute right-32 top-5">
+              <MdEdit
+                onClick={() => setIsEdit(!isEdit)}
+                className="text-4xl p-1 cursor-pointer bg-purple-500 text-[#fee7ff] rounded-md opacity-90 hover:opacity-100 active:scale-90 transition-all duration-200"
+              />
+            </span>
+            <span className="absolute right-20 top-5">
+              <TbTrashFilled
+                onClick={async () => {
+                  await fetch(
+                    "https://employee-manager-backend.up.railway.app/api/delete_employee",
+                    {
+                      method: "DELETE",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({ id: modelId }),
+                    }
+                  );
+
+                  await fetch(
+                    "https://employee-manager-backend.up.railway.app/api/employee_data"
+                  )
+                    .then((res) => res.json())
+                    .then((data) => {
+                      setEmployeeData(data);
+                    });
+
+                  setOpen(false);
+                }}
+                className="text-4xl p-1 cursor-pointer bg-purple-500 text-[#fee7ff] rounded-md opacity-90 hover:opacity-100 active:scale-90 transition-all duration-200"
+              />
+            </span>
+          </>
         ) : null}
 
         <Form

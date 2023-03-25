@@ -65,7 +65,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
       age,
       phone,
       address,
-      corrdinate: {
+      cordinates: {
         longitude,
         latitude,
       },

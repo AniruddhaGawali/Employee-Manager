@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
           age: employee_data.age,
           address: employee_data.address,
           department: employee_data.department,
-          corrdinate: {
+          cordinates: {
             longitude: employee_data.longitude,
             latitude: employee_data.latitude,
           },

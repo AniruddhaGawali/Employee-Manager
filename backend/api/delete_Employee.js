@@ -21,7 +21,7 @@ router.delete("/", async (req, res) => {
     console.log(err);
     return res
       .status(500)
-      .json({ message: "Error connecting to database", isSuccess: false });
+      .json({ message: "Error connecting to db", isSuccess: false });
   }
 });
 

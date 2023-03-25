@@ -46,8 +46,8 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
       setAge(data.age);
       setPhone(data.phone);
       setAddress(data.address);
-      setLongitude(data.longitude);
-      setLatitude(data.latitude);
+      setLongitude(data.cordinates.longitude);
+      setLatitude(data.cordinates.latitude);
       setIsContact(data.status.contract);
       setIsFullTime(data.status.full_time);
       setIsRemote(data.status.remote_location);
@@ -65,8 +65,10 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
       age,
       phone,
       address,
-      longitude,
-      latitude,
+      corrdinate: {
+        longitude,
+        latitude,
+      },
       status: {
         contract: isContact,
         full_time: isFullTime,

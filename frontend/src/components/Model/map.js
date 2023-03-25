@@ -9,8 +9,8 @@ const Map = ({ cordinates }) => {
         <h3 className="font-semibold text-2xl pb-5">Location on Map</h3>
         <MapContainer
           ref={mapref}
-          center={[51.505, -0.09]}
-          zoom={15}
+          center={cordinates}
+          zoom={8}
           scrollWheelZoom={false}
           style={{
             height: "400px",
@@ -21,7 +21,7 @@ const Map = ({ cordinates }) => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[51.505, -0.09]}></Marker>
+          <Marker position={cordinates}></Marker>
         </MapContainer>
       </div>
     </>

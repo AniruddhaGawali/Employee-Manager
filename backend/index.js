@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/employee_data", require("./api/employee_data"));
 app.use("/api/add_employee", require("./api/add_employee"));
 app.use("/api/edit_employee", require("./api/edit_employee"));
-app.use("/api/delete_employee", require("./api/delete_employee"));
+app.use("/api/delete_employee", require("./api/delete_Employee"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary: #9333ea;
+    --secondary: #ffa8ff;
+  }
+
   html {
     font-family: poppins, sans-serif;
   }

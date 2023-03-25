@@ -2,9 +2,12 @@ import React from "react";
 import { SetId } from "@/pages/_app";
 import { EmployeeDataContext } from "@/pages/_app";
 
-const Form = ({ isOpen, isEdit }) => {
+import { toast } from "react-toastify";
+
+const Form = ({ isOpen, isEdit, setIsEdit }) => {
   const { modelId, setModelId } = React.useContext(SetId);
-  const { employeeData } = React.useContext(EmployeeDataContext);
+  const { employeeData, setEmployeeData } =
+    React.useContext(EmployeeDataContext);
 
   const [name, setName] = React.useState("");
   const [department, setDepartment] = React.useState("");
@@ -46,7 +49,7 @@ const Form = ({ isOpen, isEdit }) => {
     }
   }, [modelId]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = {
@@ -65,7 +68,7 @@ const Form = ({ isOpen, isEdit }) => {
     };
 
     if (modelId) {
-      fetch(
+      await fetch(
         `https://employee-manager-backend.up.railway.app/api/edit_employee`,
         {
           method: "POST",
@@ -76,10 +79,59 @@ const Form = ({ isOpen, isEdit }) => {
         }
       )
         .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error(error));
+        .then(async (data) => {
+          if (data.isSuccess) {
+            toast.success("Edit Employee Succesfull", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+            setIsEdit(!isEdit);
+
+            await fetch(
+              "https://employee-manager-backend.up.railway.app/api/employee_data"
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                setEmployeeData(data);
+              });
+          } else {
+            toast.error("Edit Employee Unsuccesfull", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          }
+        })
+
+        .catch((error) => {
+          console.error(error);
+          toast.error(
+            "Add New Employee Unsuccesfull, May be due to serve Problems",
+            {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            }
+          );
+        });
     } else {
-      fetch(
+      await fetch(
         "https://employee-manager-backend.up.railway.app/api/add_employee",
         {
           method: "POST",
@@ -90,8 +142,56 @@ const Form = ({ isOpen, isEdit }) => {
         }
       )
         .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error(error));
+        .then(async (data) => {
+          if (data.isSuccess) {
+            toast.success("Add New Employee Succesfull", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+
+            await fetch(
+              "https://employee-manager-backend.up.railway.app/api/employee_data"
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                setEmployeeData(data);
+              });
+          } else {
+            toast.error("Add New Employee Unsuccesfull", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          }
+        })
+
+        .catch((error) => {
+          console.error(error);
+          toast.error(
+            "Add New Employee Unsuccesfull, May be due to serve Problems",
+            {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            }
+          );
+        });
     }
   };
 
@@ -122,7 +222,7 @@ const Form = ({ isOpen, isEdit }) => {
               onChange={(e) => setName(e.target.value)}
               className={`border-2 border-purple-500/70 p-2 rounded-md focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-purple-500/70 ${
                 !isEdit
-                  ? "border-0 outline-none text-2xl font-semibold bg-transparent pt-0"
+                  ? "border-none outline-none text-2xl font-semibold bg-transparent pt-0"
                   : ""
               }`}
             />
@@ -147,7 +247,7 @@ const Form = ({ isOpen, isEdit }) => {
               onChange={(e) => setDepartment(e.target.value)}
               className={`border-2 border-purple-500/70 p-2 rounded-md focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-purple-500/70 ${
                 !isEdit
-                  ? "border-0 outline-none text-2xl font-semibold bg-transparent"
+                  ? "border-none outline-none text-2xl font-semibold bg-transparent"
                   : ""
               }`}
             />
@@ -172,7 +272,7 @@ const Form = ({ isOpen, isEdit }) => {
               onChange={(e) => setEmail(e.target.value)}
               className={`border-2 border-purple-500/70 p-2 rounded-md focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-purple-500/70 ${
                 !isEdit
-                  ? "border-0 outline-none text-2xl font-semibold bg-transparent"
+                  ? "border-none outline-none text-2xl font-semibold bg-transparent"
                   : ""
               }`}
             />
@@ -196,7 +296,7 @@ const Form = ({ isOpen, isEdit }) => {
               onChange={(e) => setAge(e.target.value)}
               className={`border-2 border-purple-500/70 p-2 rounded-md focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-purple-500/70 ${
                 !isEdit
-                  ? "border-0 outline-none text-2xl font-semibold bg-transparent"
+                  ? "border-none outline-none text-2xl font-semibold bg-transparent"
                   : ""
               }`}
             />
@@ -220,7 +320,7 @@ const Form = ({ isOpen, isEdit }) => {
               onChange={(e) => setPhone(e.target.value)}
               className={`border-2 border-purple-500/70 p-2 rounded-md focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-purple-500/70 ${
                 !isEdit
-                  ? "border-0 outline-none text-2xl font-semibold bg-transparent"
+                  ? "border-none outline-none text-2xl font-semibold bg-transparent"
                   : ""
               }`}
             />
@@ -245,7 +345,7 @@ const Form = ({ isOpen, isEdit }) => {
               onChange={(e) => setAddress(e.target.value)}
               className={`border-2 border-purple-500/70 p-2 rounded-md focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-purple-500/70 ${
                 !isEdit
-                  ? "border-0 outline-none text-2xl font-semibold bg-transparent"
+                  ? "border-none outline-none text-2xl font-semibold bg-transparent"
                   : ""
               }`}
             />
@@ -311,7 +411,7 @@ const Form = ({ isOpen, isEdit }) => {
           {isEdit ? (
             <div className="flex ml-1 mt-1 col-span-2 items-center justify-start">
               <button
-                className="bg-purple-500 text-white font-bold py-2 px-4 rounded hover:bg-purple-600/60 active:bg-purple-600 transition-all duration-200 "
+                className="bg-purple-500 text-white font-bold py-2 px-4 rounded hover:bg-[#fe74fd] active:bg-[#f540f1] transition-all duration-200 "
                 onClick={handleSubmit}
               >
                 {modelId ? "Update Employee" : "Add Employee"}

@@ -9,9 +9,9 @@ const Card = ({ data, setIsModelOn }) => {
 
   return (
     <>
-      <section className="w-full flex flex-col items-start justify-center text-center border-4 border-purple-500/70 bg-purple-300/50 p-5 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 ease-in-out text-black/70 ">
-        <div className="w-full h-56 bg-white rounded-lg flex items-center justify-center mb-10">
-          <FaUser className="text-9xl bg-purple-500 p-3 rounded-full text-white" />
+      <section className="w-full flex flex-col items-start justify-center text-center border-4 border-[#ffa8ff] bg-purple-300/50 p-5 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 ease-in-out text-black/70 ">
+        <div className="w-full h-56 bg-white  rounded-lg flex items-center justify-center mb-10">
+          <FaUser className="text-9xl bg-[#ffa8ff] p-3 rounded-full text-white" />
         </div>
 
         <div className="flex flex-col items-start pb-4 ml-2">

@@ -5,6 +5,8 @@ import Card from "@/components/Card";
 
 import Model from "@/components/Model";
 
+import { ToastContainer } from "react-toastify";
+
 import { IoIosAddCircle } from "react-icons/io";
 
 import { EmployeeDataContext } from "./_app";
@@ -69,6 +71,7 @@ export default function Home() {
         </div>
         <Model isOpen={isModelOn} setOpen={setIsModelOn} />
       </main>
+      <ToastContainer />
     </>
   );
 }

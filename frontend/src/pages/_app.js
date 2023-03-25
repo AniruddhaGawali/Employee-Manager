@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 
 const EmployeeDataContext = React.createContext(null);
@@ -19,7 +20,7 @@ export default function App({ Component, pageProps }) {
   return (
     <EmployeeDataContext.Provider value={{ employeeData, setEmployeeData }}>
       <SetId.Provider value={{ modelId, setModelId }}>
-        <Component {...pageProps} />{" "}
+        <Component {...pageProps} />
       </SetId.Provider>
     </EmployeeDataContext.Provider>
   );

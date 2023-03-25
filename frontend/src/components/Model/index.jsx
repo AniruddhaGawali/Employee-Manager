@@ -21,19 +21,23 @@ const Model = ({ isOpen, setOpen, id }) => {
               setIsEdit(false);
               setOpen(false);
             }}
-            className="text-4xl cursor-pointer bg-purple-500 text-white rounded-md opacity-90 hover:opacity-100 active:scale-90 transition-all duration-200"
+            className="text-4xl cursor-pointer bg-purple-500 text-[#fee7ff] rounded-md opacity-90 hover:opacity-100 active:scale-90 transition-all duration-200"
           />
         </span>
         {modelId ? (
           <span className="absolute right-20 top-5">
             <MdEdit
               onClick={() => setIsEdit(!isEdit)}
-              className="text-4xl p-1 cursor-pointer bg-purple-500 text-white rounded-md opacity-90 hover:opacity-100 active:scale-90 transition-all duration-200"
+              className="text-4xl p-1 cursor-pointer bg-purple-500 text-[#fee7ff] rounded-md opacity-90 hover:opacity-100 active:scale-90 transition-all duration-200"
             />
           </span>
         ) : null}
 
-        <Form isOpen={isOpen} isEdit={modelId ? isEdit : true} />
+        <Form
+          isOpen={isOpen}
+          isEdit={modelId ? isEdit : true}
+          setIsEdit={setIsEdit}
+        />
       </div>
       <div className="fixed w-screen h-screen top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] -z-1  bg-black/40 backdrop-blur-sm"></div>
     </div>

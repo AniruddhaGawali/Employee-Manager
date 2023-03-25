@@ -10,7 +10,7 @@ const Map = ({ cordinates }) => {
         <MapContainer
           ref={mapref}
           center={cordinates}
-          zoom={8}
+          zoom={1}
           scrollWheelZoom={false}
           style={{
             height: "400px",

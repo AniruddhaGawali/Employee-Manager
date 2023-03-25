@@ -37,6 +37,7 @@ const Model = ({ isOpen, setOpen, id }) => {
           isOpen={isOpen}
           isEdit={modelId ? isEdit : true}
           setIsEdit={setIsEdit}
+          setOpen={setOpen}
         />
       </div>
       <div className="fixed w-screen h-screen top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] -z-1  bg-black/40 backdrop-blur-sm"></div>

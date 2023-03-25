@@ -4,7 +4,7 @@ import { EmployeeDataContext } from "@/pages/_app";
 
 import { toast } from "react-toastify";
 
-const Form = ({ isOpen, isEdit, setIsEdit }) => {
+const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
   const { modelId, setModelId } = React.useContext(SetId);
   const { employeeData, setEmployeeData } =
     React.useContext(EmployeeDataContext);
@@ -162,6 +162,8 @@ const Form = ({ isOpen, isEdit, setIsEdit }) => {
               .then((data) => {
                 setEmployeeData(data);
               });
+
+            setOpen(false);
           } else {
             toast.error("Add New Employee Unsuccesfull", {
               position: "top-right",

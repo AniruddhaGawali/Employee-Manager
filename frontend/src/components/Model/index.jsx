@@ -37,26 +37,32 @@ const Model = ({ isOpen, setOpen, id }) => {
             <span className="absolute right-20 top-5">
               <TbTrashFilled
                 onClick={async () => {
-                  await fetch(
-                    "https://employee-manager-backend.up.railway.app/api/delete_employee",
-                    {
-                      method: "DELETE",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify({ id: modelId }),
-                    }
-                  );
+                  if (
+                    window.confirm(
+                      "Are you sure you want to delete this employee?"
+                    )
+                  ) {
+                    await fetch(
+                      "https://employee-manager-backend.up.railway.app/api/delete_employee",
+                      {
+                        method: "DELETE",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ id: modelId }),
+                      }
+                    );
 
-                  await fetch(
-                    "https://employee-manager-backend.up.railway.app/api/employee_data"
-                  )
-                    .then((res) => res.json())
-                    .then((data) => {
-                      setEmployeeData(data);
-                    });
+                    await fetch(
+                      "https://employee-manager-backend.up.railway.app/api/employee_data"
+                    )
+                      .then((res) => res.json())
+                      .then((data) => {
+                        setEmployeeData(data);
+                      });
 
-                  setOpen(false);
+                    setOpen(false);
+                  }
                 }}
                 className="text-4xl p-1 cursor-pointer bg-purple-500 text-[#fee7ff] rounded-md opacity-90 hover:opacity-100 active:scale-90 transition-all duration-200"
               />

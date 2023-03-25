@@ -45,7 +45,7 @@ const Model = ({ isOpen, setOpen, id }) => {
                     await fetch(
                       "https://employee-manager-backend.up.railway.app/api/delete_employee",
                       {
-                        method: "POST",
+                        method: "DELETE",
                         headers: {
                           "Content-Type": "application/json",
                         },

@@ -28,7 +28,9 @@ const Map = () => {
           </MapContainer>
         </div>
       ) : (
-        <div>Loading</div>
+        <div lassName="flex flex-col items-start justify-center rounded-lg p-5 px-10 ">
+          Loading the Map...
+        </div>
       )}
     </>
   );

@@ -179,12 +179,11 @@ const Dashboard = () => {
       <div className="flex flex-col items-center justify-center">
         <Navbar onDashboard={true} />
 
-        <div className="grid grid-cols-3 items-center justify-center mt-20 gap-x-10 gap-y-20 p-10 px-32 ">
-          <div className=" grid grid-cols-2 col-span-3 gap-x-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center mt-20 gap-x-10 gap-y-20 p-10  min-[700px]:px-32 ">
+          <div className=" grid grid-cols-1 min-[1000px]:grid-cols-2  col-span-3 gap-x-10 ">
             {employeeAge !== null ? (
               <div className="flex flex-col items-center justify-center">
                 <h2 className="text-2xl font-semibold pb-5 ">
-                  {" "}
                   Age of Employee
                 </h2>
                 <Bar data={employeeAge} />
@@ -201,7 +200,7 @@ const Dashboard = () => {
           </div>
 
           {employeeFullTime !== null ? (
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center max-[1000px]:col-span-2 ">
               <h2 className="text-2xl font-semibold pb-5">
                 No. Employee on Fulltime
               </h2>
@@ -210,7 +209,7 @@ const Dashboard = () => {
           ) : null}
 
           {employeeRemoteLocation !== null ? (
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center max-[1000px]:col-span-2">
               <h2 className="text-2xl font-semibold pb-5">
                 No. Employee on Remote Location
               </h2>
@@ -219,7 +218,7 @@ const Dashboard = () => {
           ) : null}
 
           {employeeContract !== null ? (
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center max-[1000px]:col-span-2">
               <h2 className="text-2xl font-semibold pb-5">
                 No. Employee on Contract
               </h2>

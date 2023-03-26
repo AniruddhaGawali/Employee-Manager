@@ -207,8 +207,8 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
           {modelId ? "Update Employee" : "Add New Employee"}
         </h2>
 
-        <form className="grid grid-cols-2 gap-6 mt-10 ">
-          <div className="flex flex-col mt-5">
+        <form className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 ">
+          <div className="flex flex-col mt-5 md:col-span-1 col-span-2">
             <label
               htmlFor="name"
               className={
@@ -233,7 +233,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
             />
           </div>
 
-          <div className="flex flex-col mt-5">
+          <div className="flex flex-col mt-5 md:col-span-1 col-span-2">
             <label
               htmlFor="department"
               className={
@@ -258,7 +258,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
             />
           </div>
 
-          <div className="flex flex-col mt-5">
+          <div className="flex flex-col mt-5 md:col-span-1 col-span-2">
             <label
               htmlFor="email"
               className={
@@ -282,7 +282,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
               }`}
             />
           </div>
-          <div className="flex flex-col mt-5">
+          <div className="flex flex-col mt-5 md:col-span-1 col-span-2">
             <label
               htmlFor="age"
               className={
@@ -306,7 +306,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
               }`}
             />
           </div>
-          <div className="flex flex-col mt-5">
+          <div className="flex flex-col mt-5 md:col-span-1 col-span-2">
             <label
               htmlFor="phone"
               className={
@@ -332,7 +332,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
           </div>
           <div></div>
 
-          <div className="flex flex-col mt-5 col-span-2">
+          <div className="flex flex-col mt-5  md:col-span-1 col-span-2">
             <label
               htmlFor="Address"
               className={
@@ -357,7 +357,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
             />
           </div>
 
-          <div className="flex ml-1 mt-1 col-span-2 items-center justify-start">
+          <div className="flex ml-1 mt-1  items-center justify-start md:col-span-1 col-span-2">
             <input
               type="checkbox"
               name="Is on Contract"
@@ -376,7 +376,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
             </label>
           </div>
 
-          <div className="flex ml-1 mt-1 col-span-2 items-center justify-start">
+          <div className="flex ml-1 mt-1 md:col-span-1 col-span-2 items-center justify-start">
             <input
               type="checkbox"
               name="Is  fulltime"
@@ -395,7 +395,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
             </label>
           </div>
 
-          <div className="flex ml-1 mt-1 col-span-2 items-center justify-start">
+          <div className="flex ml-1 mt-1 md:col-span-1 col-span-2 items-center justify-start">
             <input
               type="checkbox"
               name="Is Remote Location"
@@ -415,7 +415,7 @@ const Form = ({ isOpen, isEdit, setIsEdit, setOpen }) => {
           </div>
 
           {isEdit ? (
-            <div className="flex ml-1 mt-1 col-span-2 items-center justify-start">
+            <div className="flex ml-1 mt-1 md:col-span-1 col-span-2 items-center justify-start">
               <button
                 className="bg-purple-500 text-white font-bold py-2 px-4 rounded hover:bg-[#fe74fd] active:bg-[#f540f1] transition-all duration-200 "
                 onClick={handleSubmit}

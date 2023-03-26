@@ -9,7 +9,7 @@ const Navbar = ({ search, setSearch, onDashboard }) => {
 
   return (
     <>
-      <nav className="bg-purple-600/75 w-8/12 mx-10 mt-10 rounded-full p-2 flex items-center justify-between">
+      <nav className="bg-purple-600/75 md:w-8/12 md:mx-10 mt-10 rounded-full p-2 flex items-center justify-between mx-2 w-5/6">
         <div className="flex items-center justify-center">
           <div className="text-xl h-10  font-bold text-purple-600 bg-[#fee7ff] w-fit  rounded-l-full px-3 py-2 flex text-center items-center justify-center ">
             {OnFocus ? <BiSearch className="text-purple-600 text-3xl" /> : "E"}
@@ -25,7 +25,7 @@ const Navbar = ({ search, setSearch, onDashboard }) => {
                   onChange={(e) => setSearch(e.target.value)}
                   value={search}
                   placeholder="Search"
-                  className="py-1 ml-2 bg-transparent font-medium text-xl h-fit w-52 focus:outline-none focus-visible:outline-none text-[#fee7ff] placeholder-[#fee7ff]"
+                  className="py-1 ml-2 bg-transparent w-4/5 font-medium text-xl h-fit md:w-52 focus:outline-none focus-visible:outline-none text-[#fee7ff] placeholder-[#fee7ff]"
                 />
               </div>
             </>

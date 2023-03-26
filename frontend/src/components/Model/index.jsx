@@ -21,7 +21,7 @@ const Model = ({ isOpen, setOpen }) => {
 
   return (
     <div className={`${isOpen ? "inherit" : "hidden"}`}>
-      <div className="fixed bg-white w-2/3 h-5/6 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10 shadow-2xl rounded-lg overflow-x-scroll">
+      <div className="fixed bg-white w-11/12 sm:w-2/3 h-5/6 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10 shadow-2xl rounded-lg overflow-x-scroll">
         <span className="absolute right-5 top-5">
           <RxCross2
             onClick={() => {

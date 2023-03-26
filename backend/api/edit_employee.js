@@ -24,10 +24,6 @@ router.post("/", async (req, res) => {
           age: employee_data.age,
           address: employee_data.address,
           department: employee_data.department,
-          cordinates: {
-            longitude: employee_data.longitude,
-            latitude: employee_data.latitude,
-          },
           status: {
             remote_location: employee_data.status.remote_location,
             contract: employee_data.status.contract,

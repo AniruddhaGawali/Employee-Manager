@@ -15,23 +15,9 @@ const Map = dynamic(() => import("./map"), {
 
 const Model = ({ isOpen, setOpen }) => {
   const { modelId } = React.useContext(SetId);
-  const { setEmployeeData, employeeData } =
-    React.useContext(EmployeeDataContext);
+  const { setEmployeeData } = React.useContext(EmployeeDataContext);
 
   const [isEdit, setIsEdit] = React.useState(false);
-  const [cordinates, setCordinates] = React.useState([0, 0]);
-
-  useEffect(() => {
-    if (employeeData != null) {
-      employeeData.forEach((e) => {
-        if (e._id == modelId) {
-          setCordinates([e.cordinates.longitude, e.cordinates.latitude]);
-        }
-      });
-    }
-
-    console.log(cordinates);
-  }, [modelId]);
 
   return (
     <div className={`${isOpen ? "inherit" : "hidden"}`}>
@@ -104,7 +90,7 @@ const Model = ({ isOpen, setOpen }) => {
         {/* maps */}
 
         {/* {console.log(cordinates)} */}
-        {isEdit || modelId === null ? null : <Map cordinates={cordinates} />}
+        {isEdit || modelId === null ? null : <Map />}
       </div>
 
       <div className="fixed w-screen h-screen top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] -z-1  bg-black/40 backdrop-blur-sm" />
